@@ -30,7 +30,7 @@ export default {
       status: false
     };
   },
-  emits: ['close'],
+  emits: ['close', 'counter'],
   components: {
     Modal
   },
@@ -38,7 +38,6 @@ export default {
   methods: {
     statusM() {
       this.status = !this.status
-
     }
   }
 

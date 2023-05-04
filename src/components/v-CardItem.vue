@@ -7,6 +7,10 @@
       <span class="cardItem__brand-name">{{ product_data.brand }}</span>
     </div>
     <p class="cardItem__name">{{ product_data.name }}</p>
+    <div class="cardItem__btns">
+      <button class="cardItem__btn" @click="clickedBtn">Купить <span v-if="counter > 0">{{ counter }}</span></button>
+      <button class="cardItem__btn" @click="clickedBtnOut" :disabled="isButtonDisabled">Отмена</button>
+    </div>
   </div>
 </template>
 
@@ -14,7 +18,10 @@
 export default {
   name: "CardItem",
   data() {
-    return {};
+    return {
+      counter: 0,
+      isButtonDisabled: false,
+    };
   },
   props: {
     product_data: {
@@ -24,6 +31,21 @@ export default {
       },
     },
   },
+  emits: ['counter'],
+  methods: {
+    clickedBtn() {
+      this.counter++;
+      this.$emit('counter')
+    },
+    clickedBtnOut() {
+      if (this.counter === 0) {
+        this.isButtonDisabled = !this.isButtonDisabled;
+        this.isButtonDisabled = !this.isButtonDisabled;
+      } else {
+        this.counter--;
+      }
+    }
+  }
 };
 </script>
 
@@ -31,6 +53,8 @@ export default {
 @import "../assets/styles/styles.scss";
 
 .cardItem {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   height: 390px;
   cursor: pointer;
@@ -66,6 +90,27 @@ export default {
     font-size: 12px;
     line-height: 20px;
     color: #667085;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn {
+    background-color: #354153;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    outline: none;
+    padding: 15px;
+    // width: 40%;
+    margin-top: 10px;
+    cursor: pointer;
+
+    &:active {
+      background-color: darken(#354153, 10%);
+    }
   }
 }
 </style>
