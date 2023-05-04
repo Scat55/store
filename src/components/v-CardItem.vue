@@ -1,9 +1,6 @@
 <template>
   <div class="cardItem">
-    <img
-      :src="require('../assets/image/cardItems/' + product_data.image)"
-      alt="cardItem"
-    />
+    <img :src="require('../assets/image/cardItems/' + product_data.image)" alt="cardItem" />
     <p class="cardItem__price">{{ product_data.price }} руб</p>
     <div class="cardItem__brand">
       Бренд
@@ -32,15 +29,13 @@ export default {
 
 <style lang="scss">
 @import "../assets/styles/styles.scss";
+
 .cardItem {
   width: 300px;
   height: 390px;
   cursor: pointer;
   transition: all 0.3s;
 
-  &:hover {
-    transform: scale(1.03);
-  }
   img {
     width: 270px;
   }
@@ -51,6 +46,7 @@ export default {
     line-height: 28px;
     color: #0d1421;
   }
+
   &__brand {
     font-weight: 500;
     font-size: 14px;

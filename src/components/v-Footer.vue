@@ -16,7 +16,7 @@ export default {
 @import "../assets/styles/styles";
 
 .footer__text {
-  margin-top: 170px;
+  margin-top: 150px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
